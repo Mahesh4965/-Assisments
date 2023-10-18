@@ -1,0 +1,62 @@
+1.JAVA
+A. Create an array with the values(1,2,3,4,5,6,7) and suffle it.
+CODE :
+import java.util.Array;
+import java.util.Collections;
+import java.util.List;
+public class ShuffleArray {
+        public static void main(String[] args) {
+             Integer[] intArray = { 1, 2, 3, 4, 5, 6, 7 };
+              List<Integer> intList = Arrays.asList(intArray);
+                Collections.shuffle(intList);
+                 intList.toArray(intArray);
+                System.out.println(Arrays.toString(intArray));
+     }
+}
+B.Enter roman numbers as input  and convert it to an integer. (ex IX=9)
+CODE:
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class RomanToInteger {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a Roman numeral: ");
+        String romanNumeral = scanner.nextLine();
+        int result = romanToInteger(romanNumeral);
+        System.out.println("Integer value: " + result);
+    }
+
+    public static int romanToInteger(String s) {
+        Map<Character, Integer> romanValues = new HashMap<>();
+        romanValues.put('I', 1);
+        romanValues.put('V', 5);
+        romanValues.put('X', 10);
+        romanValues.put('L', 50);
+        romanValues.put('C', 100);
+        romanValues.put('D', 500);
+        romanValues.put('M', 1000);
+
+        int result = 0;
+        int prevValue = 0;
+
+        for (int i = s.length() - 1; i >= 0; i--) {
+            int currentValue = romanValues.get(s.charAt(i));
+
+            if (currentValue < prevValue) {
+                result -= currentValue;
+            } else {
+                result += currentValue;
+            }
+
+            prevValue = currentValue;
+        }
+
+        return result;
+    }
+}
+C.Check if the input is pangram or not. (Pangram is a sentence that contains all the alphabet
+from a-z)
+CODE :
+
